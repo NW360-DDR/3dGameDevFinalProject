@@ -552,7 +552,7 @@ MonoBehaviour:
   smoothing: 0.25
   speed: 80
   speedMod: 5
-  jumpForce: 30
+  jumpForce: 10
 --- !u!54 &609907736
 Rigidbody:
   m_ObjectHideFlags: 0

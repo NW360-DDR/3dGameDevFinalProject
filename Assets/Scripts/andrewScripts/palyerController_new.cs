@@ -10,15 +10,16 @@ public class palyerController_new : MonoBehaviour
 
     private float tempPlayerx;
     private float tempPlayerz;
-
     public float smoothing;
 
     public float speed;
     public float speedMod;
-    public float jumpForce;
 
-    bool grounded;
+    public float jumpForce;
+    bool isGrounded;
     private float rayDist = 0.1f;
+    public float gravity;
+    private bool atJumpApex = false;
 
     void Start()
     {
@@ -27,30 +28,25 @@ public class palyerController_new : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Ground Detection
-        //  Ray groundDetection = new Ray(transform.position, -transform.up);
-        Debug.DrawRay(rayCastTarget.position, -transform.up * rayDist);
-        grounded = Physics.Raycast(rayCastTarget.position, Vector3.down, rayDist);
-        print(grounded);
+        Jump();
 
-        if (grounded && Input.GetKeyDown(KeyCode.Space))
+        // If all goes according to plan, this should keep the players y velocity at 0 if grounded
+        // update, it did not go according to plan and in fact probably made it worse
+        // note to self: improve or remove this function
+        if (isGrounded)
         {
-            playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            playerRB.velocity = new Vector3(playerRB.velocity.x, 0, playerRB.velocity.z);
         }
 
-        //grab input
+        // Get Input Direction and Velocity
         float horizontal = Input.GetAxisRaw("Horizontal");
-
-        //grab player y velocity
         float y = playerRB.velocity.y;
 
-        //set the movement direction
+        // Sets move direction and applies force to player
         moveDir = transform.forward * horizontal;
-
-        //does the actual movement
         playerRB.AddForce(moveDir.normalized * speed * speedMod * Time.deltaTime, ForceMode.Impulse);
 
-        // stops the player and smoothes movement
+        // Stops player and smoothes movement
         if (Input.GetAxisRaw("Horizontal") == 0f)
         {
             //grab temporary player x and z coordinates
@@ -68,7 +64,7 @@ public class palyerController_new : MonoBehaviour
             playerRB.velocity = playerRB.velocity * smoothing;
         }
 
-        //limit player speed to speed variable
+        // Limits speed to speed variable
         if (playerRB.velocity.magnitude > speed)
         {
             playerRB.velocity = playerRB.velocity.normalized * speed;
@@ -76,11 +72,34 @@ public class palyerController_new : MonoBehaviour
 
         //adds the player y coordinate back after doing all this math, this is important for jumping
         playerRB.velocity = new Vector3(playerRB.velocity.x, y, playerRB.velocity.z);
-
-
-
-
-
-
     }
-}
+
+    void Jump()
+    {
+        // Applies gravity effect to player
+        playerRB.AddForce(Vector3.down * gravity, ForceMode.Impulse);
+        
+        // Ground Detection
+        Debug.DrawRay(rayCastTarget.position, -transform.up * rayDist);
+        isGrounded = Physics.Raycast(rayCastTarget.position, Vector3.down, rayDist);
+        //print(isGrounded);
+
+        // Makes the player Jump
+        if (isGrounded && Input.GetKeyDown(KeyCode.Space))
+        {
+            playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+
+        // Checks for apex of jump
+        if (playerRB.velocity.y < 0 && atJumpApex == false)
+        {
+            atJumpApex = true;
+            print("Aepx");
+        }
+        if (isGrounded)
+        {
+            atJumpApex = false;
+        }
+    }
+
+} // end of program
