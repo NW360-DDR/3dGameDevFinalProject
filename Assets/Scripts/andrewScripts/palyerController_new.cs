@@ -5,6 +5,7 @@ using UnityEngine;
 public class palyerController_new : MonoBehaviour
 {
     public Rigidbody playerRB;
+    public Rigidbody rayCastTarget;
     Vector3 moveDir;
 
     private float tempPlayerx;
@@ -16,31 +17,29 @@ public class palyerController_new : MonoBehaviour
     public float speedMod;
     public float jumpForce;
 
+    bool grounded;
+    private float rayDist = 0.1f;
+
     void Start()
     {
         playerRB = GetComponent<Rigidbody>();
-        Ray groundDetection = new Ray(transform.position, -transform.up);
     }
 
-    //very important that this is fixed update, normal update only runs once per frame which is not enough for good physics simulation
     void FixedUpdate()
     {
-        // displays the raycast in editor window during runtime
-        Debug.DrawRay(transform.position, -transform.up);
+        // Ground Detection
+        //  Ray groundDetection = new Ray(transform.position, -transform.up);
+        Debug.DrawRay(rayCastTarget.position, -transform.up * rayDist);
+        grounded = Physics.Raycast(rayCastTarget.position, Vector3.down, rayDist);
+        print(grounded);
+
+        if (grounded && Input.GetKeyDown(KeyCode.Space))
+        {
+            playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
 
         //grab input
         float horizontal = Input.GetAxisRaw("Horizontal");
-
-
-        //jumping
-            if (groundDetection.isTouching)
-            {
-
-            }
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                playerRB.AddForce(new Vector3(0, jumpForce, 0));
-            }
 
         //grab player y velocity
         float y = playerRB.velocity.y;
