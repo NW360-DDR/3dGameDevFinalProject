@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.ShortcutManagement;
+//using UnityEditor.ShortcutManagement; commented out so the game can compile correctly -andrew
 using UnityEngine;
 
 public class Nate_RecipeManager : MonoBehaviour
