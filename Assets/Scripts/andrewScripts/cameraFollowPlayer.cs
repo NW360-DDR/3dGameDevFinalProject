@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class cameraFollowPlayer : MonoBehaviour
 {
-    public Rigidbody playerRB;
+    public Transform target;
 
-    void Start()
-    {
-        
-    }
+    public float smoothSpeed = 0.3f;
+    public Vector3 offset;
 
-    void FixedUpdate()
+    void LateUpdate()
     {
-        
+        Vector3 desiredPosition = target.position + offset;
+        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+        transform.position = smoothedPosition;
     }
 }

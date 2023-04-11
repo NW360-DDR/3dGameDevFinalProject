@@ -16,7 +16,7 @@ public class palyerController_new : MonoBehaviour
     public float speedMod;
 
     public float jumpForce;
-    bool isGrounded;
+    [SerializeField] bool isGrounded;
     private float rayDist = 0.1f;
     public float gravity;
     private bool atJumpApex = false;
@@ -26,10 +26,14 @@ public class palyerController_new : MonoBehaviour
         playerRB = GetComponent<Rigidbody>();
     }
 
+    private void Update()
+    {
+        // this has to be in Update rather than FixedUpdate, otherwise jumps are inconsistent
+        Jump();
+    }
+
     void FixedUpdate()
     {
-        Jump();
-
         // Get Input Direction and Velocity
         float horizontal = Input.GetAxisRaw("Horizontal");
         float y = playerRB.velocity.y;
