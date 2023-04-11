@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/JuanScene.unity
+    guid: dcecbf8ccfc4e8a4f833b96fe09b8ede
   m_configObjects: {}
