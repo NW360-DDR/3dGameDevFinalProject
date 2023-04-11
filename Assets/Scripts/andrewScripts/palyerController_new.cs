@@ -30,14 +30,6 @@ public class palyerController_new : MonoBehaviour
     {
         Jump();
 
-        // If all goes according to plan, this should keep the players y velocity at 0 if grounded
-        // update, it did not go according to plan and in fact probably made it worse
-        // note to self: improve or remove this function
-        if (isGrounded)
-        {
-            playerRB.velocity = new Vector3(playerRB.velocity.x, 0, playerRB.velocity.z);
-        }
-
         // Get Input Direction and Velocity
         float horizontal = Input.GetAxisRaw("Horizontal");
         float y = playerRB.velocity.y;
@@ -90,7 +82,7 @@ public class palyerController_new : MonoBehaviour
             playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
 
-        // Checks for apex of jump
+        // Checks for apex of jump -- Doesn't do anything at the moment 4/10/23
         if (playerRB.velocity.y < 0 && atJumpApex == false)
         {
             atJumpApex = true;
