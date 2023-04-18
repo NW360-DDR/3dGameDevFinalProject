@@ -97,5 +97,4 @@ public class palyerController_new : MonoBehaviour
             atJumpApex = false;
         }
     }
-
 } // end of program
