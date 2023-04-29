@@ -21,6 +21,8 @@ public class palyerController_new : MonoBehaviour
     public float gravity;
     private bool atJumpApex = false;
 
+    [SerializeField] new Vector3 forwardVector;
+
     void Start()
     {
         playerRB = GetComponent<Rigidbody>();
@@ -39,8 +41,9 @@ public class palyerController_new : MonoBehaviour
         float y = playerRB.velocity.y;
 
         // Sets move direction and applies force to player
-        moveDir = transform.forward * horizontal;
-        playerRB.AddForce(moveDir.normalized * speed * speedMod * Time.deltaTime, ForceMode.Impulse);
+        // forwardVector = transform.forward;
+        moveDir = transform.TransformVector(1, 0, 0) * horizontal;
+        playerRB.AddForce(-moveDir.normalized * speed * speedMod * Time.deltaTime, ForceMode.Impulse);
 
         // Stops player and smoothes movement
         if (Input.GetAxisRaw("Horizontal") == 0f)
