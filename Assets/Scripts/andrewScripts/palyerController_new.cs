@@ -16,10 +16,13 @@ public class palyerController_new : MonoBehaviour
     public float speedMod;
 
     public float jumpForce;
-    [SerializeField] bool isGrounded;
+    [SerializeField] bool isGrounded; //testing variable
     private float rayDist = 0.1f;
     public float gravity;
     private bool atJumpApex = false;
+
+    [SerializeField] new Vector3 forwardVector; // testing variable
+    [SerializeField] bool isTouchingLadder = false;
 
     void Start()
     {
@@ -30,6 +33,7 @@ public class palyerController_new : MonoBehaviour
     {
         // this has to be in Update rather than FixedUpdate, otherwise jumps are inconsistent
         Jump();
+        Ladder();
     }
 
     void FixedUpdate()
@@ -39,8 +43,9 @@ public class palyerController_new : MonoBehaviour
         float y = playerRB.velocity.y;
 
         // Sets move direction and applies force to player
-        moveDir = transform.forward * horizontal;
-        playerRB.AddForce(moveDir.normalized * speed * speedMod * Time.deltaTime, ForceMode.Impulse);
+        // playerRb.AddForce uses -moveDir because it "inverts" the movement. Without it, the controls are reversed.
+        moveDir = transform.TransformVector(1, 0, 0) * horizontal;
+        playerRB.AddForce(-moveDir.normalized * speed * speedMod * Time.deltaTime, ForceMode.Impulse);
 
         // Stops player and smoothes movement
         if (Input.GetAxisRaw("Horizontal") == 0f)
@@ -70,6 +75,20 @@ public class palyerController_new : MonoBehaviour
         playerRB.velocity = new Vector3(playerRB.velocity.x, y, playerRB.velocity.z);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        // checks if player is touching the ladder
+        if (other.tag == "Ladder")
+        {
+            print("Touching Ladder");
+            isTouchingLadder = true;
+        }
+        else
+        {
+            isTouchingLadder = false;
+        }
+    }
+
     void Jump()
     {
         // Applies gravity effect to player
@@ -97,4 +116,14 @@ public class palyerController_new : MonoBehaviour
             atJumpApex = false;
         }
     }
+
+    void Ladder()
+    {
+        if (isTouchingLadder && Input.GetKeyDown("E"))
+        {
+            // Teleport player from bottom of ladder to the top of the ladder
+        }
+    }
+
+
 } // end of program
