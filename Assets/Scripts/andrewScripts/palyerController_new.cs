@@ -22,7 +22,6 @@ public class palyerController_new : MonoBehaviour
     private bool atJumpApex = false;
 
     [SerializeField] new Vector3 forwardVector; // testing variable
-    [SerializeField] bool isTouchingLadder = false;
 
     void Start()
     {
@@ -33,7 +32,6 @@ public class palyerController_new : MonoBehaviour
     {
         // this has to be in Update rather than FixedUpdate, otherwise jumps are inconsistent
         Jump();
-        Ladder();
     }
 
     void FixedUpdate()
@@ -77,16 +75,7 @@ public class palyerController_new : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // checks if player is touching the ladder
-        if (other.tag == "Ladder")
-        {
-            print("Touching Ladder");
-            isTouchingLadder = true;
-        }
-        else
-        {
-            isTouchingLadder = false;
-        }
+    
     }
 
     void Jump()
@@ -117,13 +106,6 @@ public class palyerController_new : MonoBehaviour
         }
     }
 
-    void Ladder()
-    {
-        if (isTouchingLadder && Input.GetKeyDown("E"))
-        {
-            // Teleport player from bottom of ladder to the top of the ladder
-        }
-    }
 
 
 } // end of program
