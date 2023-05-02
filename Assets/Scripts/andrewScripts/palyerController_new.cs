@@ -21,6 +21,11 @@ public class palyerController_new : MonoBehaviour
     public float gravity;
     private bool atJumpApex = false;
 
+<<<<<<< Updated upstream
+=======
+    [SerializeField] new Vector3 forwardVector; // testing variable
+
+>>>>>>> Stashed changes
     void Start()
     {
         playerRB = GetComponent<Rigidbody>();
@@ -70,6 +75,14 @@ public class palyerController_new : MonoBehaviour
         playerRB.velocity = new Vector3(playerRB.velocity.x, y, playerRB.velocity.z);
     }
 
+<<<<<<< Updated upstream
+=======
+    private void OnTriggerEnter(Collider other)
+    {
+    
+    }
+
+>>>>>>> Stashed changes
     void Jump()
     {
         // Applies gravity effect to player
@@ -98,4 +111,9 @@ public class palyerController_new : MonoBehaviour
         }
     }
 
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
 } // end of program

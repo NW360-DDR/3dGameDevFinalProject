@@ -15,7 +15,7 @@ public class Nate_FoodMinigame : MonoBehaviour
     [Header("Objects")]
     [SerializeField]GameObject target;
     [SerializeField]GameObject cursor;
-    // [SerializeField]GameObject PlayerInventory;
+    // [SerializeField]Inventory Manager Inven;
     // We're not actually doing this since I haven't implemented it yet.
     // The intention is for the minigame script to handle all of the food creation.
 
@@ -47,7 +47,15 @@ public class Nate_FoodMinigame : MonoBehaviour
         {
             cursor.transform.Translate( Vector3.right * cursorSpeed * Time.deltaTime);
 
-            // TODO: Auto-fail if we exceed the 
+            // Also, don't forgor to auto-fail if we fuck up and wait TOO long
+            if (cursor.GetComponent<RectTransform>().anchoredPosition.x > 750)
+            {
+                Debug.Log("Congrats, you burned it you fool!");
+                cursor.GetComponent<RectTransform>().anchoredPosition = Vector3.zero;
+                miniStarted = false;
+                cookFinish = false;
+            }
+
             if (Input.GetKeyDown("space"))
             {
                 cookFinish = true;
@@ -89,3 +97,4 @@ public class Nate_FoodMinigame : MonoBehaviour
     }
 
 }
+
