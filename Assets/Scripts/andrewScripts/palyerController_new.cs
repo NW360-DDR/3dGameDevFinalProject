@@ -21,11 +21,14 @@ public class palyerController_new : MonoBehaviour
     public float gravity;
     private bool atJumpApex = false;
 
+    AudioSource jumpsound; //Adding JumpSound
+
     [SerializeField] new Vector3 forwardVector; // testing variable
 
     void Start()
     {
         playerRB = GetComponent<Rigidbody>();
+        jumpsound = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -82,7 +85,7 @@ public class palyerController_new : MonoBehaviour
     {
         // Applies gravity effect to player
         playerRB.AddForce(Vector3.down * gravity, ForceMode.Impulse);
-        
+
         // Ground Detection
         Debug.DrawRay(rayCastTarget.position, -transform.up * rayDist);
         isGrounded = Physics.Raycast(rayCastTarget.position, Vector3.down, rayDist);
@@ -92,6 +95,7 @@ public class palyerController_new : MonoBehaviour
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
             playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            jumpsound.Play(); //Sound of player jumping
         }
 
         // Checks for apex of jump -- Doesn't do anything at the moment 4/10/23
