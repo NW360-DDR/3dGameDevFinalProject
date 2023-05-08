@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 6348644382008145636}
   - component: {fileID: 6348644382008145638}
   - component: {fileID: 6348644382008145643}
+  - component: {fileID: -2075538055303783568}
   m_Layer: 0
   m_Name: PlayerAvatar
   m_TagString: Untagged
@@ -175,6 +176,28 @@ MonoBehaviour:
   jumpForce: 15
   isGrounded: 0
   gravity: 0.5
+  forwardVector: {x: 0, y: 0, z: 0}
+--- !u!95 &-2075538055303783568
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6114625763348237240}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: db019c0fafabd4f41bbfbc00d7a5ba94, type: 3}
+  m_Controller: {fileID: 9100000, guid: 4d2cc9a59f01d174fa6a804891fd3589, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6348644382515735850
 GameObject:
   m_ObjectHideFlags: 0

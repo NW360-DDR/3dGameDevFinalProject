@@ -73,11 +73,6 @@ public class palyerController_new : MonoBehaviour
         playerRB.velocity = new Vector3(playerRB.velocity.x, y, playerRB.velocity.z);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-    
-    }
-
     void Jump()
     {
         // Applies gravity effect to player
