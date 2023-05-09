@@ -164,7 +164,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OtherSpot: {fileID: 2973157317776991844}
-  acceptableDistance: 3
+  acceptableDistance: 5
+  dist: 0
 --- !u!1 &4053866578068147199
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,7 +211,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OtherSpot: {fileID: 3930123952197157005}
-  acceptableDistance: 3
+  acceptableDistance: 5
+  dist: 0
 --- !u!1 &5826878867017072103
 GameObject:
   m_ObjectHideFlags: 0
