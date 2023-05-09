@@ -21,7 +21,7 @@ public class EnemyStateMachine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("PlayerAvatar");
+        player = GameObject.FindGameObjectWithTag("Player");
         nav = GetComponent<NavMeshAgent>();
         brain = GetComponent<Owens_StateMachine>();
         hurtbox = GetComponent<SphereCollider>();

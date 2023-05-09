@@ -15,7 +15,7 @@ public class LadderScript : MonoBehaviour
     {
         Telepront = OtherSpot.transform.position;
         // PUT HERE: Whatever we have the player named as/tagged as, populate this here.
-        Player = GameObject.Find("PlayerAvatar");
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
