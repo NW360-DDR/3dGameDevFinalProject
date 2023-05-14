@@ -22,6 +22,7 @@ public class palyerController_new : MonoBehaviour
     private bool atJumpApex = false;
 
     AudioSource jumpsound; //Adding JumpSound
+    private Animator animator; // Enables the animator controller to switch between idle and walking anim
 
     [SerializeField] new Vector3 forwardVector; // testing variable
 
@@ -29,12 +30,33 @@ public class palyerController_new : MonoBehaviour
     {
         playerRB = GetComponent<Rigidbody>();
         jumpsound = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
         // this has to be in Update rather than FixedUpdate, otherwise jumps are inconsistent
         Jump();
+
+        // Sets the walking bool to true or false if the player is moving. Enables animation switching
+        if (moveDir != Vector3.zero)
+        {
+            animator.SetBool("isWakling", true);
+        }
+        else
+        {
+            animator.SetBool("isWakling", false);
+        }
+
+        // Sets the punching bool to true or false if the player is moving. Enables animation switching
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            animator.SetBool("isPunching", true);
+        }
+       // else if (!(Input.GetKeyDown(KeyCode.Mouse0)))
+       // {
+       //     animator.SetBool("isPunching", false);
+       // }
     }
 
     void FixedUpdate()
@@ -76,11 +98,6 @@ public class palyerController_new : MonoBehaviour
         playerRB.velocity = new Vector3(playerRB.velocity.x, y, playerRB.velocity.z);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-    
-    }
-
     void Jump()
     {
         // Applies gravity effect to player
@@ -99,6 +116,7 @@ public class palyerController_new : MonoBehaviour
         }
 
         // Checks for apex of jump -- Doesn't do anything at the moment 4/10/23
+        // Still doesn't do anything lol 5/14/23
         if (playerRB.velocity.y < 0 && atJumpApex == false)
         {
             atJumpApex = true;
