@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 936093196786586741}
   - component: {fileID: 8005939237986625999}
   - component: {fileID: 6533424864780068798}
+  - component: {fileID: 5159164882831751788}
   m_Layer: 0
   m_Name: GWallSM
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5159164882831751788
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4123614179358079113}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.071638, y: 13.076292, z: 24.015821}
+  m_Center: {x: 0.009558677, y: 1.5415577, z: 0.674201}
