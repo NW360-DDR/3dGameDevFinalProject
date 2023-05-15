@@ -26,7 +26,7 @@ public class LadderScript : MonoBehaviour
         // If the player is close to this ladder thing, we can allow him to telepront.
         if (Mathf.Abs(dist) < Mathf.Pow(acceptableDistance, 2) && Input.GetKeyDown(KeyCode.E))
         {
-            Vector3 newPos = new Vector3(Telepront.x, Telepront.y, Player.transform.position.z);
+            Vector3 newPos = new Vector3(Player.transform.position.x, Telepront.y, Player.transform.position.z);
             Player.transform.position = newPos;
         }
     }

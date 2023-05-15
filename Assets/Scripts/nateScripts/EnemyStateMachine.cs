@@ -11,6 +11,7 @@ public class EnemyStateMachine : MonoBehaviour
     public float distanceToChase;
     public float distanceToAttack;
     public float cooldownTimer = 1;
+    public float Dist;
 
     private bool withinAttackRange;
     private bool playerSpotted;
@@ -27,13 +28,15 @@ public class EnemyStateMachine : MonoBehaviour
         hurtbox = GetComponent<SphereCollider>();
         hurtbox.enabled = false;
         playerSpotted= false;
-
+        brain.PushState(empty, emptyStart, emptyExit);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Dist = Vector3.Distance(transform.position, player.transform.position);
+        playerSpotted =  Dist < distanceToChase;
+        withinAttackRange = Dist < distanceToAttack;
     }
     
     //~~~~~~~~~~~~~~~STATES~~~~~~~~~~~~~~~~~~~~~
@@ -75,6 +78,7 @@ public class EnemyStateMachine : MonoBehaviour
         {
             brain.PushState(Violence, ViolenceEnter, ViolenceExit);
             cooldownTimer = 1;
+            hurtbox.enabled = false;
         }
     }
     void AttackExit() { }

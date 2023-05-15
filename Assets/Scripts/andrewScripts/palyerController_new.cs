@@ -24,7 +24,7 @@ public class palyerController_new : MonoBehaviour
     AudioSource jumpsound; //Adding JumpSound
     private Animator animator; // Enables the animator controller to switch between idle and walking anim
 
-    [SerializeField] new Vector3 forwardVector; // testing variable
+    [SerializeField] Vector3 forwardVector; // testing variable
 
     void Start()
     {
