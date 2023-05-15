@@ -41,22 +41,24 @@ public class palyerController_new : MonoBehaviour
         // Sets the walking bool to true or false if the player is moving. Enables animation switching
         if (moveDir != Vector3.zero)
         {
-            animator.SetBool("isWakling", true);
+            animator.SetBool("isWalk", true);
         }
         else
         {
-            animator.SetBool("isWakling", false);
+            animator.SetBool("isWalk", false);
         }
 
         // Sets the punching bool to true or false if the player is moving. Enables animation switching
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            animator.SetBool("isPunching", true);
+            animator.SetBool("isPunch", true);
+            Debug.Log("XXXXXXXX");
         }
-       // else if (!(Input.GetKeyDown(KeyCode.Mouse0)))
-       // {
-       //     animator.SetBool("isPunching", false);
-       // }
+        else if (!(Input.GetKeyDown(KeyCode.Mouse0)))
+        {
+            animator.SetBool("isPunch", false);
+            Debug.Log("----------");
+        }
     }
 
     void FixedUpdate()
