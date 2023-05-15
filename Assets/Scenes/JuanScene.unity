@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43596905, g: 0.55358094, b: 0.5430385, a: 1}
+  m_IndirectSpecularColor: {r: 0.24606577, g: 0.35967723, b: 0.4425919, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -25434,7 +25434,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2abbc89a8407c65418781c75e5163f2c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 23.44
+      value: 23.380001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2abbc89a8407c65418781c75e5163f2c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -25479,8 +25479,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2abbc89a8407c65418781c75e5163f2c, type: 3}
   m_PrefabInstance: {fileID: 947458299}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &947458301
-MeshCollider:
+--- !u!65 &947458301
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -25489,10 +25489,22 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 2
+  m_Size: {x: 1.957968, y: 1.0671048, z: 0.80811036}
+  m_Center: {x: 0.478984, y: 0.033551946, z: -1.2111386}
+--- !u!65 &947458302
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640168673}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.3672197, y: 1.4140013, z: 3.5338295}
+  m_Center: {x: 0.48665267, y: 0.20700052, z: 0.5778485}
 --- !u!1001 &953614432
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57063,7 +57075,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8513859187396932465}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 50.98, y: 27.49, z: 753.84}
+  m_LocalPosition: {x: 50.98, y: 27.43, z: 753.84}
   m_LocalScale: {x: 332.48303, y: 332.48294, z: 332.48294}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -57154,6 +57166,8 @@ GameObject:
   - component: {fileID: 6738450968005656723}
   - component: {fileID: 4109396431842591315}
   - component: {fileID: 7071182760911829752}
+  - component: {fileID: 8513859187396932467}
+  - component: {fileID: 8513859187396932466}
   m_Layer: 0
   m_Name: Cauldron
   m_TagString: Untagged
@@ -57161,6 +57175,33 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8513859187396932466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8513859187396932465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15a11f76b2c4f9144913246ec753a6a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winLevel: Win
+--- !u!136 &8513859187396932467
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8513859187396932465}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.00637932
+  m_Height: 0.026766356
+  m_Direction: 1
+  m_Center: {x: -0.0009235423, y: 0.0012284702, z: 0.0004674205}
 --- !u!1 &9030264470064185841
 GameObject:
   m_ObjectHideFlags: 0
