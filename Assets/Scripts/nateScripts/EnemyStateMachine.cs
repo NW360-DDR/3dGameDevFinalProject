@@ -9,7 +9,7 @@ public class EnemyStateMachine : MonoBehaviour
     private GameObject player;
 
     public float distanceToChase;
-    public float distanceToAttack;
+    public float distanceToAttack = 2;
     public float cooldownTimer = 1;
     public float Dist;
 
@@ -18,6 +18,7 @@ public class EnemyStateMachine : MonoBehaviour
 
     private NavMeshAgent nav;
     private SphereCollider hurtbox;
+    public Vector3 knockback;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +33,7 @@ public class EnemyStateMachine : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Dist = Vector3.Distance(transform.position, player.transform.position);
         playerSpotted =  Dist < distanceToChase;
@@ -68,20 +69,33 @@ public class EnemyStateMachine : MonoBehaviour
     void ViolenceEnter(){}
     void ViolenceExit(){}
 
-    void AttackEnter(){ }
+    void AttackEnter()
+    {
+        hurtbox.enabled = true;
+    }
     void Attack()
     {
-        //anim.setBool("Attack", true);
-        hurtbox.enabled = true;
+        nav.enabled = false;
+        hurtbox.enabled = false;
+        /*Rigidbody playerRB = player.GetComponent<Rigidbody>();
+        knockback = transform.position - player.transform.position;
+        knockback = knockback.normalized;
+        knockback.y += 5;
+        playerRB.velocity = (knockback * player.GetComponent<palyerController_new>().knockbackMult);
         cooldownTimer -= Time.deltaTime;
+        */
         if (cooldownTimer <= 0)
         {
             brain.PushState(Violence, ViolenceEnter, ViolenceExit);
             cooldownTimer = 1;
-            hurtbox.enabled = false;
+            
         }
     }
-    void AttackExit() { }
+    void AttackExit() 
+    { 
+        nav.enabled = true;
+        hurtbox.enabled = false;
+    }
 
 
 }

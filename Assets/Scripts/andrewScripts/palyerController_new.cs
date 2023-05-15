@@ -25,6 +25,7 @@ public class palyerController_new : MonoBehaviour
     private Animator animator; // Enables the animator controller to switch between idle and walking anim
 
     [SerializeField] Vector3 forwardVector; // testing variable
+    public float knockbackMult = 1;
 
     void Start()
     {
@@ -97,6 +98,19 @@ public class palyerController_new : MonoBehaviour
 
         //adds the player y coordinate back after doing all this math, this is important for jumping
         playerRB.velocity = new Vector3(playerRB.velocity.x, y, playerRB.velocity.z);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            Debug.Log("Enemy booped!");
+            Vector3 knockback = transform.position - other.transform.position;
+            knockback = knockback.normalized;
+            knockback *= 20;
+            knockback.y += 5;
+            playerRB.AddForce(knockback * knockbackMult, ForceMode.Impulse);
+        }
     }
 
     void Jump()
