@@ -9,6 +9,7 @@ TagManager:
   - ladderTop
   - Food
   - Enemy
+  - hitbox
   layers:
   - Default
   - TransparentFX
