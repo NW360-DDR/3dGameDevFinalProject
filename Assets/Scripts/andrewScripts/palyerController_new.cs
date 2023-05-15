@@ -17,7 +17,7 @@ public class palyerController_new : MonoBehaviour
 
     public float jumpForce;
     [SerializeField] bool isGrounded; //testing variable
-    private float rayDist = 0.1f;
+    private float rayDist = 0.5f;
     public float gravity;
     private bool atJumpApex = false;
 
@@ -108,7 +108,9 @@ public class palyerController_new : MonoBehaviour
             Vector3 knockback = transform.position - other.transform.position;
             knockback = knockback.normalized;
             knockback *= 20;
+            knockback.x += 5;
             knockback.y += 5;
+            knockback.z += 5;
             playerRB.AddForce(knockback * knockbackMult, ForceMode.Impulse);
         }
     }

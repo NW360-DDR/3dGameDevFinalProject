@@ -13,7 +13,7 @@ public class EnemyStateMachine : MonoBehaviour
     public float cooldownTimer = 1;
     public float Dist;
 
-    private bool withinAttackRange;
+    public bool withinAttackRange;
     private bool playerSpotted;
 
     private NavMeshAgent nav;
@@ -75,26 +75,26 @@ public class EnemyStateMachine : MonoBehaviour
     }
     void Attack()
     {
-        nav.enabled = false;
-        hurtbox.enabled = false;
+        nav.SetDestination(transform.position);
         /*Rigidbody playerRB = player.GetComponent<Rigidbody>();
         knockback = transform.position - player.transform.position;
         knockback = knockback.normalized;
         knockback.y += 5;
         playerRB.velocity = (knockback * player.GetComponent<palyerController_new>().knockbackMult);
-        cooldownTimer -= Time.deltaTime;
         */
+        cooldownTimer -= Time.deltaTime;
+        
         if (cooldownTimer <= 0)
         {
-            brain.PushState(Violence, ViolenceEnter, ViolenceExit);
+            hurtbox.enabled = false;
             cooldownTimer = 1;
+            brain.PushState(Violence, ViolenceEnter, ViolenceExit);
             
         }
     }
     void AttackExit() 
     { 
-        nav.enabled = true;
-        hurtbox.enabled = false;
+        
     }
 
 

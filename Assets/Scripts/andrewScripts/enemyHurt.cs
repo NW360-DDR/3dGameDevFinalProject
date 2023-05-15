@@ -19,8 +19,8 @@ public class enemyHurt : MonoBehaviour
     void Update()
     {
         // Check distance between player and enemy
-        dist = Mathf.Pow((Player.transform.position.x - transform.position.x), 2) + Mathf.Pow((Player.transform.position.y - transform.position.y), 2);
-        if (Mathf.Abs(dist) < Mathf.Pow(acceptableDistance, 2) && Input.GetKeyDown(KeyCode.Mouse0))
+        dist = Vector3.Distance(transform.position, Player.transform.position);
+        if (Mathf.Abs(dist) < acceptableDistance && Input.GetKeyDown(KeyCode.Mouse0))
         {
             Debug.Log("Fin~");
             Destroy(gameObject);

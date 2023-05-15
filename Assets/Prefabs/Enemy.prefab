@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceToChase: 10
-  distanceToAttack: 2
+  distanceToAttack: 3
   cooldownTimer: 1
   Dist: 0
   knockback: {x: 0, y: 0, z: 0}
