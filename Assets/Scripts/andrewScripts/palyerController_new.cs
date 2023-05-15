@@ -68,9 +68,8 @@ public class palyerController_new : MonoBehaviour
         float y = playerRB.velocity.y;
 
         // Sets move direction and applies force to player
-        // playerRb.AddForce uses -moveDir because it "inverts" the movement. Without it, the controls are reversed.
-        moveDir = transform.TransformVector(1, 0, 0) * horizontal;
-        playerRB.AddForce(-moveDir.normalized * speed * speedMod * Time.deltaTime, ForceMode.Impulse);
+        moveDir = transform.TransformVector(0, 0, 1) * horizontal;
+        playerRB.AddForce(moveDir.normalized * speed * speedMod * Time.deltaTime, ForceMode.Impulse);
 
         // Stops player and smoothes movement
         if (Input.GetAxisRaw("Horizontal") == 0f)
