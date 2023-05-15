@@ -7,12 +7,14 @@ using UnityEngine.SceneManagement;
 public class SceneChange : MonoBehaviour
 {
     public string winLevel;
-
+    public GameObject uiText;
 
     private void OnTriggerStay(Collider other)
     {
         if(other.CompareTag("Player"))
         {
+            uiText.SetActive(true);
+
             if(Input.GetKeyDown(KeyCode.P))
             {
                 SceneManager.LoadScene(winLevel);
@@ -20,4 +22,12 @@ public class SceneChange : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            uiText.SetActive(false);
+
+        }
+    }
 }
